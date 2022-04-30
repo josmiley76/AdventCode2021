@@ -1,0 +1,33 @@
+.gradle
+build/
+out/
+specs/
+generated/
+schemas
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+.java-version
+.DS_Store
+
+### Generated file from lombok plugin ###
+lombok.config
