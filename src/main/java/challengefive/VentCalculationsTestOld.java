@@ -1,16 +1,20 @@
 package challengefive;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class VentCalculationsTest {
+class VentCalculationsTestOld {
 
     private final static String TEST_DATA_FILE = "/Users/JDY22/AdventCode/src/advent/com/challengefive/ventTestData.txt";
-    private final static long NUMBER_OF_DANGEROUS_POINTS = 5;
+    private final static long NUMBER_OF_DANGEROUS_POINTS_WITHOUT_DIAGONALS = 5;
+    private final static long NUMBER_OF_DANGEROUS_POINTS_WITH_DIAGONALS = 12;
     private final static int SMALLEST_X1 = 0;
     private final static int SMALLEST_Y1 = 0;
     private final static int LARGEST_X1 = 9;
@@ -30,7 +34,7 @@ class VentCalculationsTest {
     @Test
     public void shouldCalculateMinCoordinates(){
 
-        assertEquals(SMALLEST_X1, VentCalculations.calculateMinCoordinate(vents, Coordinate.X1));
+        Assertions.assertEquals(SMALLEST_X1, VentCalculations.calculateMinCoordinate(vents, Coordinate.X1));
         assertEquals(SMALLEST_X2, VentCalculations.calculateMinCoordinate(vents, Coordinate.X2));
         assertEquals(SMALLEST_Y1, VentCalculations.calculateMinCoordinate(vents, Coordinate.Y1));
         assertEquals(SMALLEST_Y2, VentCalculations.calculateMinCoordinate(vents, Coordinate.Y2));
@@ -43,11 +47,18 @@ class VentCalculationsTest {
         assertEquals(LARGEST_Y1, VentCalculations.calculateMaxCoordinate(vents, Coordinate.Y1));
         assertEquals(LARGEST_Y2, VentCalculations.calculateMaxCoordinate(vents, Coordinate.Y2));
     }
-    
+
     @Test
-    public void shouldCalculateNumberOfDangerousPointsToAvoid(){
-        long actualDangerousVents = VentCalculations.calculateTotalDangerousPoints(vents);
-        assertEquals(NUMBER_OF_DANGEROUS_POINTS, actualDangerousVents);
+    public void shouldCalculateNumberOfDangerousPointsToAvoidNotIncludingDiagonalLines(){
+        long actualDangerousVents = VentCalculations.calculateTotalDangerousPoints(vents, FALSE);
+        assertEquals(NUMBER_OF_DANGEROUS_POINTS_WITHOUT_DIAGONALS, actualDangerousVents);
     }
+
+    @Test
+    public void shouldCalculateNumberOfDangerousPointsToAvoidIncludingDiagonalLines(){
+        long actualDangerousVents = VentCalculations.calculateTotalDangerousPoints(vents, TRUE);
+        assertEquals(NUMBER_OF_DANGEROUS_POINTS_WITH_DIAGONALS, actualDangerousVents);
+    }
+
 
 }

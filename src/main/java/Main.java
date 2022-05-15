@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -45,6 +48,7 @@ public class Main {
 
         List<Vent> ventsList = ChallengeFive.readVentDataFromFile("/Users/JDY22/AdventCode/src/advent/com/challengefive/ventData.txt", "->");
 
-        System.out.println("Number of Dangerous Vents is " + VentCalculations.calculateTotalDangerousPoints(ventsList));
+        System.out.println("Number of Dangerous Vents not using diagonals is " + VentCalculations.calculateTotalDangerousPoints(ventsList, FALSE));
+        System.out.println("Number of Dangerous Vents with diagonals is " + VentCalculations.calculateTotalDangerousPoints(ventsList, TRUE));
     }
 }
